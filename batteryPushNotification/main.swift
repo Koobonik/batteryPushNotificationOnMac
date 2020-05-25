@@ -33,44 +33,40 @@ while true {
 }
 
 func sendHttpPostRequest(){
-        guard let url = URL(string: "https://smartmirror.sewingfactory.shop/api/v1/loginIdCheck") else {return}
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let body = """
-            {
-                "userLoginId" : "testkoo",
-                "userLoginPassword" : "q1w2e3r4!!",
-                "userBlueToothAddr" : "asdasd"
+    guard let url = URL(string: "https://smartmirror.sewingfactory.shop/api/v1/loginIdCheck") else {return}
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    //request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    let body = """
+        {
+            "userLoginId" : "testkoo",
+            "userLoginPassword" : "q1w2e3r4!!",
+            "userBlueToothAddr" : "asdasd"
 
-            }
-        """.data(using:String.Encoding.utf8, allowLossyConversion: false)
-        request.httpBody = body
-        let session = URLSession.shared
-        session.dataTask(with: request) { (data, response, error) in
-            if let res = response{
-                print(res)
-            }
-            if let data = data {
-                do{
-                    
-                    let str = String(decoding: data, as: UTF8.self)
-                    print(str)
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-                    print("여기야?")
-                    print(json)
-                    guard let newValue = json as? Array<Any> else {
-                        print("invalid format")
-                        return
-                    }
-                }catch{
-                    print(error)
+        }
+    """.data(using:String.Encoding.utf8, allowLossyConversion: false)
+    request.httpBody = body
+    let session = URLSession.shared
+    session.dataTask(with: request) { (data, response, error) in
+        if let res = response{
+            print(res)
+        }
+        if let data = data {
+            do{
+                
+                let str = String(decoding: data, as: UTF8.self)
+                print(str)
+                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                print("여기야?")
+                print(json)
+                guard let newValue = json as? Array<Any> else {
+                    print("invalid format")
+                    return
                 }
-
+            }catch{
+                print(error)
             }
-            }.resume()
-
-        
-
-    }
+        }
+    }.resume()
+}
