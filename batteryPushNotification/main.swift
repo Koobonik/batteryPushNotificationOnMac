@@ -10,6 +10,9 @@ import Foundation
 import IOKit.ps
 
 while true {
+    print("이름을 입력해주세요")
+    let name = readLine()
+    print(name)
     let snapshot = IOPSCopyPowerSourcesInfo().takeRetainedValue()
     // Pull out a list of power sources
     let sources = IOPSCopyPowerSourcesList(snapshot).takeRetainedValue() as Array
