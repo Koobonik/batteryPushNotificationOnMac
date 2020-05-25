@@ -9,10 +9,6 @@
 import Foundation
 import IOKit.ps
 
-// For each power source...
-let url = URL(string: "https://smartmirror.sewingfactory.shop/api/v1/")!
-var request = URLRequest(url: url)
-request.httpMethod = "POST"
 while true {
     let snapshot = IOPSCopyPowerSourcesInfo().takeRetainedValue()
     // Pull out a list of power sources
