@@ -33,6 +33,9 @@ while true {
 }
 
 func sendHttpPostRequest(){
+    // 유저디폴트 저장과 읽기
+//    UserDefaults.standard.set("name", forKey: "name")
+//    UserDefaults.standard.string(forKey: "name") ?? ""
     guard let url = URL(string: "https://smartmirror.sewingfactory.shop/api/v1/loginIdCheck") else {return}
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
