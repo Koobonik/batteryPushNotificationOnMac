@@ -18,6 +18,7 @@ while true {
     let sources = IOPSCopyPowerSourcesList(snapshot).takeRetainedValue() as Array
     for ps in sources {
         // Fetch the information for a given power source out of our snapshot
+        // info에는 파워에 대한 정보들이 담기게 됨.
         let info = IOPSGetPowerSourceDescription(snapshot, ps).takeUnretainedValue() as! [String: AnyObject]
 
         // Pull out the name and capacity
