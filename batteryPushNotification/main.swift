@@ -36,7 +36,7 @@ func sendHttpPostRequest(){
     // 유저디폴트 저장과 읽기
 //    UserDefaults.standard.set("name", forKey: "name")
 //    UserDefaults.standard.string(forKey: "name") ?? ""
-    guard let url = URL(string: "https://smartmirror.sewingfactory.shop/api/v1/loginIdCheck") else {return}
+    guard let url = URL(string: "https://smartmirror.sewingfactory.shop/api/v1/login") else {return}
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -44,8 +44,9 @@ func sendHttpPostRequest(){
     let body = """
         {
             "userLoginId" : "testkoo",
-            "userLoginPassword" : "q1w2e3r4!!",
-            "userBlueToothAddr" : "asdasd"
+            "userLoginPassword" : "q1w2e3r4",
+            "userBlueToothAddr" : "asdasd",
+            "firebaseToken" : "asdasddwqdqwd"
 
         }
     """.data(using:String.Encoding.utf8, allowLossyConversion: false)
